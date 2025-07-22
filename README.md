@@ -1,2 +1,914 @@
-# Ganesh-Mandal
-My First website 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shree Ganesh Mandal Sindhari</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #ff5722;
+      --primary-dark: #e64a19;
+      --secondary: #673ab7;
+      --gold: #ffc107;
+      --light: #fff9c4;
+      --dark: #3e2723;
+      --text: #4e342e;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('https://img.freepik.com/free-photo/ganesh-wallpaper-hindu-god_1150-10902.jpg') no-repeat center center fixed;
+      background-size: cover;
+      scroll-behavior: smooth;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* Particles effect */
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    
+    /* Header with floating effect */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      animation: floatHeader 3s ease-in-out infinite;
+    }
+    
+    @keyframes floatHeader {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .corner-img {
+      position: absolute;
+      top: 10px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px var(--gold);
+      transition: all 0.3s ease;
+      animation: rotateGanesh 20s linear infinite;
+    }
+    
+    @keyframes rotateGanesh {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .corner-left {
+      left: 10px;
+    }
+    
+    .corner-right {
+      right: 10px;
+    }
+    
+    .corner-img:hover {
+      transform: scale(1.2);
+      filter: brightness(1.2);
+    }
+    
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    header p {
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+    
+    /* Navigation with hover effect */
+    nav {
+      display: flex;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--secondary), #512da8);
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      display: block;
+      font-weight: bold;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: var(--gold);
+      transition: all 0.3s ease;
+    }
+    
+    nav a:hover::after {
+      width: 80%;
+      left: 10%;
+    }
+    
+    /* Main container */
+    .container {
+      padding: 2.5rem;
+      background: rgba(255, 255, 255, 0.85);
+      margin: 30px auto;
+      border-radius: 15px;
+      max-width: 1200px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    
+    .container:hover {
+      transform: translateY(-5px);
+    }
+    
+    h2 {
+      color: var(--primary-dark);
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+    }
+    
+    /* Events section */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 2rem;
+    }
+    
+    .event {
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .event:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    
+    .event::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--primary);
+    }
+    
+    .event h3 {
+      color: var(--primary-dark);
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+    }
+    
+    .event-date {
+      background: var(--primary);
+      color: white;
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    
+    /* Gallery section */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 2rem;
+    }
+    
+    .gallery-item {
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      height: 250px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.4s ease;
+    }
+    
+    .gallery-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s ease;
+    }
+    
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+    
+    .gallery-item p {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      margin: 0;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    
+    .gallery-item:hover p {
+      transform: translateY(0);
+    }
+    
+    /* Countdown section */
+    #countdown {
+      background: linear-gradient(135deg, var(--secondary), #4527a0);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+    }
+    
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    
+    .countdown-box {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 20px 15px;
+      min-width: 100px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .countdown-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    
+    .countdown-label {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    /* Contact section */
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 2rem;
+    }
+    
+    .contact-info {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .contact-info h3 {
+      color: var(--primary-dark);
+      margin-bottom: 1.2rem;
+      font-size: 1.5rem;
+    }
+    
+    .contact-detail {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .contact-detail i {
+      color: var(--primary);
+      font-size: 1.2rem;
+      min-width: 30px;
+      padding-top: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    form {
+      display: grid;
+      gap: 15px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    form label {
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    
+    form input, form textarea {
+      padding: 12px 15px;
+      border-radius: 8px;
+      border: 2px solid #ddd;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    form input:focus, form textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.2);
+    }
+    
+    button {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(255, 87, 34, 0.4);
+    }
+    
+    button:hover {
+      background: linear-gradient(135deg, var(--secondary), #512da8);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(103, 58, 183, 0.6);
+    }
+    
+    #msg {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: 500;
+      min-height: 24px;
+    }
+    
+    /* Floating elements */
+    .floating-elephant {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 80px;
+      animation: float 6s ease-in-out infinite;
+      z-index: 10;
+      cursor: pointer;
+      filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+    
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, var(--dark), #1b0000);
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      position: relative;
+    }
+    
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      text-align: left;
+    }
+    
+    .footer-section h3 {
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-size: 1.4rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--primary);
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+    
+    .footer-links a {
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .footer-links a:hover {
+      color: var(--gold);
+      transform: translateX(5px);
+    }
+    
+    .footer-links a i {
+      font-size: 0.9rem;
+    }
+    
+    .copyright {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 99;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: var(--secondary);
+      transform: translateY(-5px);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .container {
+        padding: 1.5rem;
+        margin: 20px 15px;
+      }
+      
+      header {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .corner-img {
+        width: 45px;
+        height: 45px;
+      }
+      
+      .countdown-box {
+        min-width: 80px;
+        padding: 15px 10px;
+      }
+      
+      .countdown-value {
+        font-size: 2rem;
+      }
+      
+      .floating-elephant {
+        width: 60px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      nav a {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .countdown-container {
+        gap: 10px;
+      }
+      
+      .countdown-box {
+        min-width: 70px;
+        padding: 12px 8px;
+      }
+      
+      .countdown-value {
+        font-size: 1.8rem;
+      }
+      
+      .countdown-label {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Particles background -->
+  <div id="particles-js"></div>
+  
+  <!-- Floating elephant -->
+  <img src="https://cdn-icons-png.flaticon.com/512/1993/1993749.png" alt="Floating Elephant" class="floating-elephant">
+  
+  <!-- Back to top button -->
+  <div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+  
+  <header>
+    <img src="https://pngimg.com/uploads/ganesha/ganesha_PNG47.png" alt="Ganesh Left" class="corner-img corner-left">
+    <img src="https://pngimg.com/uploads/ganesha/ganesha_PNG47.png" alt="Ganesh Right" class="corner-img corner-right">
+    <h1>Shree Ganesh Mandal Sindhari</h1>
+    <p>Devotion | Culture | Unity</p>
+  </header>
+
+  <nav>
+    <a href="#home"><i class="fas fa-home"></i> Home</a>
+    <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+    <a href="#events"><i class="fas fa-calendar-alt"></i> Events</a>
+    <a href="#gallery"><i class="fas fa-images"></i> Gallery</a>
+    <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+  </nav>
+
+  <div class="container" id="home">
+    <h2>Welcome to Our Mandal</h2>
+    <p>Experience the divine presence of Lord Ganesha and immerse yourself in the spiritual atmosphere of our community. Shree Ganesh Mandal Sindhari has been a beacon of faith and tradition since 2005.</p>
+    
+    <div class="countdown-container">
+      <div class="countdown-box">
+        <div class="countdown-value" id="days">00</div>
+        <div class="countdown-label">Days</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-value" id="hours">00</div>
+        <div class="countdown-label">Hours</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-value" id="minutes">00</div>
+        <div class="countdown-label">Minutes</div>
+      </div>
+      <div class="countdown-box">
+        <div class="countdown-value" id="seconds">00</div>
+        <div class="countdown-label">Seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="about">
+    <h2>About Us</h2>
+    <p>Established in 2005, Shree Ganesh Mandal Sindhari has been a central part of the community's religious and cultural life. Every year, we celebrate Ganesh Chaturthi with great enthusiasm, music, devotion, and unity.</p>
+    <p>Our mandal is dedicated to preserving and promoting our rich cultural heritage while serving the community through various social initiatives. We believe in fostering unity and spiritual growth among our members.</p>
+    
+    <div class="mission-vision">
+      <div class="mission">
+        <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+        <p>To create a spiritual hub that promotes devotion, cultural values, and community service while honoring Lord Ganesha.</p>
+      </div>
+      <div class="vision">
+        <h3><i class="fas fa-eye"></i> Our Vision</h3>
+        <p>To be a beacon of cultural preservation and spiritual growth for future generations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="events">
+    <h2>Our Events</h2>
+    <div class="events-grid">
+      <div class="event">
+        <div class="event-date">August 25 - September 3, 2025</div>
+        <h3>Ganesh Chaturthi Celebration</h3>
+        <p>10 days of celebration with daily aarti, bhajan sandhya, cultural activities, and community feasts. Join us for spiritual bliss and community bonding.</p>
+      </div>
+      <div class="event">
+        <div class="event-date">September 3, 2025</div>
+        <h3>Visarjan Procession</h3>
+        <p>Colorful and peaceful immersion of Bappa with traditional dhol, dancing, and blessings for his return next year.</p>
+      </div>
+      <div class="event">
+        <div class="event-date">Monthly Events</div>
+        <h3>Bhajan Sandhya & Satsang</h3>
+        <p>Join us every full moon for spiritual gatherings, devotional singing, and discourses on our sacred texts.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/lord-ganesha-clay-idol_1150-13574.jpg" alt="Ganesh Idol">
+        <p>Ganesh Idol 2024</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/devotees-worshipping-ganesha-statue_23-2147647642.jpg" alt="Celebration">
+        <p>Aarti and Bhajan during celebration</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/ganesh-chaturthi-celebration-with-ganesha-idol_53876-102581.jpg" alt="Decorations">
+        <p>Festival Decorations</p>
+      </div>
+      <div class="gallery-item">
+        <img src="https://img.freepik.com/free-photo/ganesh-chaturthi-celebration-with-ganesha-idol_53876-102579.jpg" alt="Procession">
+        <p>Visarjan Procession</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container" id="contact">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-detail">
+          <i class="fas fa-map-marker-alt"></i>
+          <div>
+            <h4>Address</h4>
+            <p>Shree Ganesh Mandal Sindhari, Main Road, Sindhari, Mumbai, Maharashtra</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h4>Phone</h4>
+            <p>+91 98765 43210</p>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Email</h4>
+            <p>info@ganeshmandalsindhari.com</p>
+          </div>
+        </div>
+        
+        <div class="social-links">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      
+      <div class="contact-form">
+        <form onsubmit="submitForm(event)">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="Enter your phone number">
+          </div>
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" rows="5" placeholder="Your message here..." required></textarea>
+          </div>
+          <button type="submit">Send Message</button>
+          <p id="msg"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Shree Ganesh Mandal</h3>
+        <p>Devotion, Culture, and Unity since 2005. Join us in celebrating the divine presence of Lord Ganesha.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+          <li><a href="#events"><i class="fas fa-chevron-right"></i> Events</a></li>
+          <li><a href="#gallery"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+          <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Info</h3>
+        <ul class="footer-links">
+          <li><a href="#"><i class="fas fa-map-marker-alt"></i> Sindhari, Mumbai</a></li>
+          <li><a href="tel:+919876543210"><i class="fas fa-phone-alt"></i> +91 98765 43210</a></li>
+          <li><a href="mailto:info@ganeshmandalsindhari.com"><i class="fas fa-envelope"></i> info@ganeshmandalsindhari.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Shree Ganesh Mandal Sindhari | All rights reserved
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    // Initialize particles background
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#ffc107" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#ffc107",
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 2,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "out",
+          bounce: false
+        }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: { enable: true, mode: "grab" },
+          onclick: { enable: true, mode: "push" },
+          resize: true
+        }
+      }
+    });
+    
+    // Countdown timer for Ganesh Chaturthi 2025 (September 1, 2025)
+    function updateCountdown() {
+      const targetDate = new Date('September 1, 2025 00:00:00').getTime();
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+      
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+      
+      document.getElementById('days').innerText = days;
+      document.getElementById('hours').innerText = hours;
+      document.getElementById('minutes').innerText = minutes;
+      document.getElementById('seconds').innerText = seconds;
+    }
+    
+    // Update countdown every second
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Initial call
+    
+    // Back to top button
+    const backToTopBtn = document.querySelector('.back-to-top');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('show');
+      } else {
+        backToTopBtn.classList.remove('show');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Form submission
+    function submitForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const msgElement = document.getElementById('msg');
+      
+      msgElement.innerHTML = `<i class="fas fa-check-circle"></i> Thank you ${name}, your message has been sent!`;
+      msgElement.style.color = "green";
+      
+      // Reset form
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('phone').value = '';
+      document.getElementById('message').value = '';
+    }
+    
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
